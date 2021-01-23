@@ -1,6 +1,9 @@
 import * as React from "react";
 import { QrLink } from "~/components/QrLink";
 import { constructAppUrl } from "~/common/constructAppUrl";
+import { ReceivingVideo } from "~/components/ReceivingVideo";
+
+const signalingUrl = "wss://ayame-labo.shiguredo.jp/signaling";
 
 type Props = {
   baseSenderUrl: string;
@@ -14,7 +17,17 @@ const Receiver = (props: Props) => {
     props.roomId,
     props.signalingKey
   );
-  return <QrLink sender_url={senderUrl.href} />;
+  return (
+    <div>
+      <QrLink sender_url={senderUrl.href} />
+      <br />
+      <ReceivingVideo
+        signalingKey={props.signalingKey}
+        roomId={props.roomId}
+        signalingUrl={signalingUrl}
+      />
+    </div>
+  );
 };
 
 export { Receiver };

@@ -541,6 +541,11 @@
     "@nodelib/fs.scandir" "2.1.4"
     fastq "^1.6.0"
 
+"@open-ayame/ayame-web-sdk@^2020.3.0":
+  version "2020.3.0"
+  resolved "https://registry.yarnpkg.com/@open-ayame/ayame-web-sdk/-/ayame-web-sdk-2020.3.0.tgz#380bbd883bcab4c7da002350aa12dd8d7802bc7f"
+  integrity sha512-GS8Tp4JX4BToc3LdZLvfBqds7IBUKx0P6bf20LIuB/4du1pp4rc/bv0YiMZ4erWnJ+6uDYQqvY5HQYsSrD6hCw==
+
 "@sinonjs/commons@^1.7.0":
   version "1.8.2"
   resolved "https://registry.yarnpkg.com/@sinonjs/commons/-/commons-1.8.2.tgz#858f5c4b48d80778fde4b9d541f27edc0d56488b"
