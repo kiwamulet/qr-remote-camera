@@ -1,4 +1,4 @@
-import { constructAppUrl } from "~/common/constructAppUrl.ts";
+import { constructAppUrl } from "~/common/constructAppUrl";
 
 test("can construct application URL", () => {
   const ROOM_ID = "foo@bar";

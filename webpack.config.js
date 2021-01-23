@@ -32,6 +32,7 @@ module.exports = {
     alias: {
       "~": path.resolve(__dirname, "./src"),
     },
+    extensions: [".ts", ".js", ".tsx"],
   },
   plugins: [
     new Dotenv(),

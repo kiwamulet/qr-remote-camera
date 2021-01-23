@@ -1,7 +1,6 @@
 import * as React from "react";
-import * as ReactDOM from "react-dom";
-import { QrLink } from "~/components/QrLink.tsx";
-import { constructAppUrl } from "~/common/constructAppUrl.ts";
+import { QrLink } from "~/components/QrLink";
+import { constructAppUrl } from "~/common/constructAppUrl";
 
 type Props = {
   baseSenderUrl: string;

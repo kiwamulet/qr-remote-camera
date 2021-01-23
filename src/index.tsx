@@ -1,6 +1,6 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
-import { Receiver } from "./pages/receiver.tsx";
+import { Receiver } from "~/pages/Receiver";
 
 const ROOM_ID = process.env.ROOM_ID;
 const SIGNALING_KEY = process.env.SIGNALING_KEY;
