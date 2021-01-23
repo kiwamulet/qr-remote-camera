@@ -5,16 +5,24 @@ import { ReceivingVideo } from "~/components/ReceivingVideo";
 
 const signalingUrl = "wss://ayame-labo.shiguredo.jp/signaling";
 
+function getUniqueStr() {
+  return (
+    new Date().getTime().toString(16) +
+    Math.floor(Math.random() * 1000).toString(16)
+  );
+}
+
 type Props = {
   baseSenderUrl: string;
-  roomId: string;
+  baseRoomId: string;
   signalingKey: string;
 };
 
 const Receiver = (props: Props) => {
+  const roomId = `${props.baseRoomId}@${getUniqueStr()}`;
   const senderUrl = constructAppUrl(
     props.baseSenderUrl,
-    props.roomId,
+    roomId,
     props.signalingKey
   );
   return (
@@ -23,7 +31,7 @@ const Receiver = (props: Props) => {
       <br />
       <ReceivingVideo
         signalingKey={props.signalingKey}
-        roomId={props.roomId}
+        roomId={roomId}
         signalingUrl={signalingUrl}
       />
     </div>
