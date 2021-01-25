@@ -7,10 +7,13 @@ const Dotenv = require("dotenv-webpack");
 /** @type {import('webpack').Configuration} */
 module.exports = {
   mode: process.env.NODE_ENV || "development",
-  entry: "./src/index.tsx",
+  entry: {
+    index: "./src/index.tsx",
+    camera: "./src/camera.tsx",
+  },
   output: {
     path: path.resolve(__dirname, "./dist"),
-    filename: "build.js",
+    filename: "[name].bundle.js",
   },
   module: {
     rules: [
@@ -38,6 +41,15 @@ module.exports = {
     new Dotenv(),
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, "./src/index.html"),
+      title: "Monitor (QR-RTC)",
+      chunks: ["index"],
+      filename: "index.html",
+    }),
+    new HtmlWebpackPlugin({
+      template: path.resolve(__dirname, "./src/index.html"),
+      title: "Camera (QR-RTC)",
+      chunks: ["camera"],
+      filename: "camera",
     }),
     new LicenseWebpackPlugin({
       addBanner: true,
