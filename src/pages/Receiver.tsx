@@ -2,8 +2,7 @@ import * as React from "react";
 import { QrLink } from "~/components/QrLink";
 import { constructAppUrl } from "~/common/appUrlUtils";
 import { ReceivingVideo } from "~/components/ReceivingVideo";
-
-const signalingUrl = "wss://ayame-labo.shiguredo.jp/signaling";
+import { SIGNALING_URL } from "~/common/constants";
 
 function getUniqueStr() {
   return (
@@ -32,7 +31,7 @@ const Receiver = (props: Props) => {
       <ReceivingVideo
         signalingKey={props.signalingKey}
         roomId={roomId}
-        signalingUrl={signalingUrl}
+        signalingUrl={SIGNALING_URL}
       />
     </div>
   );
