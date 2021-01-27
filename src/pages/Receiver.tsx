@@ -1,6 +1,6 @@
 import * as React from "react";
 import { QrLink } from "~/components/QrLink";
-import { constructAppUrl } from "~/common/constructAppUrl";
+import { constructAppUrl } from "~/common/appUrlUtils";
 import { ReceivingVideo } from "~/components/ReceivingVideo";
 
 const signalingUrl = "wss://ayame-labo.shiguredo.jp/signaling";
