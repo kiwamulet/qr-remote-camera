@@ -9,4 +9,12 @@ function constructAppUrl(
   return appUrl;
 }
 
-export { constructAppUrl };
+function parseAppUrl(appUrl: URL) {
+  return {
+    roomId: appUrl.searchParams.get("roomId"),
+    signalingKey: appUrl.searchParams.get("signalingKey"),
+    baseSenderUrl: appUrl.origin + appUrl.pathname,
+  };
+}
+
+export { constructAppUrl, parseAppUrl };
