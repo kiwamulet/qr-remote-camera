@@ -8,8 +8,8 @@ const { roomId, signalingKey, baseSenderUrl } = parseAppUrl(
 );
 
 let jsx: JSX.Element;
-if (roomId && signalingKey) {
-  jsx = <Sender roomId={roomId} signalingKey={signalingKey} />;
+if (roomId) {
+  jsx = <Sender roomId={roomId} signalingKey={signalingKey || undefined} />;
 } else {
   jsx = <div>not configured yet</div>;
 }

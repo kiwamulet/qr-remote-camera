@@ -3,7 +3,7 @@ import { SIGNALING_URL } from "~/common/constants";
 import { Video } from "~/components/Video";
 import * as Ayame from "@open-ayame/ayame-web-sdk";
 
-type Props = { roomId: string; signalingKey: string };
+type Props = { roomId: string; signalingKey?: string };
 type State = { srcObject: MediaStream | null };
 
 class Sender extends React.Component<Props, State> {
@@ -14,7 +14,9 @@ class Sender extends React.Component<Props, State> {
 
   componentDidMount() {
     const { roomId, signalingKey } = this.props;
-    this.startConnection(roomId, signalingKey);
+    if (signalingKey) {
+      this.startConnection(roomId, signalingKey);
+    }
   }
 
   async startConnection(roomId: string, signalingKey: string) {

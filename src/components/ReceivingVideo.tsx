@@ -2,7 +2,11 @@ import * as React from "react";
 import { Video } from "~/components/Video";
 import * as Ayame from "@open-ayame/ayame-web-sdk";
 
-type Props = { signalingKey: string; roomId: string; signalingUrl: string };
+type Props = {
+  signalingKey?: string;
+  roomId: string;
+  signalingUrl: string;
+};
 type State = { srcObject: MediaStream | null };
 
 class ReceivingVideo extends React.Component<Props, State> {
@@ -12,11 +16,10 @@ class ReceivingVideo extends React.Component<Props, State> {
   }
 
   componentDidMount() {
-    this.startConnection(
-      this.props.signalingUrl,
-      this.props.signalingKey,
-      this.props.roomId
-    );
+    const { signalingKey, roomId, signalingUrl } = this.props;
+    if (signalingKey) {
+      this.startConnection(signalingUrl, signalingKey, roomId);
+    }
   }
 
   componentWillUnmount() {}

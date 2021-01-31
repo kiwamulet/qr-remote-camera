@@ -1,11 +1,13 @@
 function constructAppUrl(
   baseUrl: string,
   roomId: string,
-  signalingKey: string
+  signalingKey?: string
 ): URL {
   const appUrl = new URL(baseUrl);
   appUrl.searchParams.append("roomId", roomId);
-  appUrl.searchParams.append("signalingKey", signalingKey);
+  if (signalingKey) {
+    appUrl.searchParams.append("signalingKey", signalingKey);
+  }
   return appUrl;
 }
 

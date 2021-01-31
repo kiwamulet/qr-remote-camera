@@ -14,7 +14,7 @@ function getUniqueStr() {
 type Props = {
   baseSenderUrl: string;
   baseRoomId: string;
-  signalingKey: string;
+  signalingKey?: string;
 };
 
 const Receiver = (props: Props) => {

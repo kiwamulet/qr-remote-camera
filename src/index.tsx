@@ -7,7 +7,7 @@ const SIGNALING_KEY = process.env.SIGNALING_KEY;
 const BASE_SENDER_URL = process.env.BASE_SENDER_URL;
 
 let jsx: JSX.Element;
-if (BASE_ROOM_ID && SIGNALING_KEY && BASE_SENDER_URL) {
+if (BASE_ROOM_ID && BASE_SENDER_URL) {
   jsx = (
     <Receiver
       baseRoomId={BASE_ROOM_ID}
