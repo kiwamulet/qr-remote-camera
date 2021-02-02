@@ -1,3 +1,4 @@
+// for .env file
 declare namespace NodeJS {
   interface ProcessEnv {
     readonly NODE_ENV: "development" | "production" | "test";
@@ -7,3 +8,6 @@ declare namespace NodeJS {
     readonly BASE_RECEIVER_URL?: string;
   }
 }
+
+// for CSS Modules
+declare module "*.css";

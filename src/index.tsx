@@ -1,5 +1,6 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
+import "./global.css";
 import { Receiver } from "~/pages/Receiver";
 
 const BASE_ROOM_ID = process.env.BASE_ROOM_ID;

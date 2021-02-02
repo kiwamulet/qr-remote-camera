@@ -1,5 +1,6 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
+import "./global.css";
 import { Sender } from "~/pages/Sender";
 import { parseAppUrl } from "~/common/appUrlUtils";
 

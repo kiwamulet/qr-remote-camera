@@ -1,5 +1,6 @@
 import * as React from "react";
 import { QRious } from "react-qrious";
+import styles from "./QrLink.css";
 
 type Props = { sender_url: string | undefined };
 
@@ -9,7 +10,7 @@ const QrLink: React.FC<Props> = ({ sender_url }) => {
       <div>
         <div>Sender URL:</div>
         <div>{sender_url}</div>
-        <QRious value={sender_url} />
+        <QRious className={styles.fill} value={sender_url} />
       </div>
     );
   } else {
