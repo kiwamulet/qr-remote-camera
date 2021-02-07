@@ -10,7 +10,7 @@ const QrLink: React.FC<Props> = ({ sender_url }) => {
       <div>
         <div>Sender URL:</div>
         <div>{sender_url}</div>
-        <QRious className={styles.fill} value={sender_url} />
+        <QRious size={400} value={sender_url} />
       </div>
     );
   } else {
