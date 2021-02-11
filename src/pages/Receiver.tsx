@@ -5,12 +5,6 @@ import { Video } from "~/components/Video";
 import { SIGNALING_URL } from "~/common/constants";
 import { constructAppUrl } from "~/common/appUrlUtils";
 
-// type Props = {
-//   signalingKey?: string;
-//   roomId: string;
-//   signalingUrl: string;
-// };
-
 function getUniqueStr() {
   return (
     new Date().getTime().toString(16) +
@@ -24,29 +18,25 @@ type Props = {
   signalingKey?: string;
 };
 
-type State = { srcObject: MediaStream | null };
+type State = { srcObject: MediaStream | null; roomId: string; senderUrl: URL };
 
 class Receiver extends React.Component<Props, State> {
-  readonly roomId: string;
-  readonly senderUrl: URL;
+  setupRoom() {
+    const { baseSenderUrl, baseRoomId, signalingKey } = this.props;
+    const roomId = `${baseRoomId}@${getUniqueStr()}`;
+    const senderUrl = constructAppUrl(baseSenderUrl, roomId, signalingKey);
+    return { roomId, senderUrl };
+  }
 
   constructor(props: Props) {
     super(props);
-    this.state = { srcObject: null };
-    const { signalingKey, baseRoomId } = this.props;
-    this.roomId = `${baseRoomId}@${getUniqueStr()}`;
-
-    this.senderUrl = constructAppUrl(
-      props.baseSenderUrl,
-      this.roomId,
-      props.signalingKey
-    );
+    this.state = { srcObject: null, ...this.setupRoom() };
   }
 
   componentDidMount() {
-    const { signalingKey, baseRoomId } = this.props;
+    const { signalingKey } = this.props;
     if (signalingKey) {
-      this.startConnection(SIGNALING_URL, signalingKey, this.roomId);
+      this.startConnection(SIGNALING_URL, signalingKey, this.state.roomId);
     }
   }
 
@@ -68,7 +58,10 @@ class Receiver extends React.Component<Props, State> {
       console.log("conn.disconnect", e);
       this.setState({
         srcObject: null,
+        ...this.setupRoom(),
       });
+      // prepare for new connection from new sender
+      this.startConnection(SIGNALING_URL, signalingKey, this.state.roomId);
     });
     connection.on("addstream", (e: any) => {
       // todo: e seems to be RTCTrackEvent, but RTCTrackEvent does not have "stream" property
@@ -80,13 +73,11 @@ class Receiver extends React.Component<Props, State> {
   }
 
   render() {
-    return (
-      <div>
-        <QrLink sender_url={this.senderUrl.href} />
-        <br />
-        <Video srcObject={this.state.srcObject} autoPlay />
-      </div>
-    );
+    if (!this.state.srcObject) {
+      return <QrLink sender_url={this.state.senderUrl.href} />;
+    } else {
+      return <Video srcObject={this.state.srcObject} autoPlay />;
+    }
   }
 }
 
