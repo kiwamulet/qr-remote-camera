@@ -7,10 +7,9 @@ type Props = { sender_url: string | undefined };
 const QrLink: React.FC<Props> = ({ sender_url }) => {
   if (sender_url) {
     return (
-      <div>
-        <div>Sender URL:</div>
-        <div>{sender_url}</div>
-        <QRious size={400} value={sender_url} />
+      <div className={styles.base}>
+        <div className={styles.description}>Sender URL:{sender_url}</div>
+        <QRious className={styles.qrcode} size={400} value={sender_url} />
       </div>
     );
   } else {
