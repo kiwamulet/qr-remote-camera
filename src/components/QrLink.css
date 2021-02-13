@@ -4,21 +4,31 @@
   left: 0;
   width: 100%;
   height: 100%;
-  /* object-fit: contain;
-  object-position: center center; */
+  object-fit: contain;
+  object-position: center center;
 }
 
 .description {
   position: static;
   margin: 0.8em;
+  text-align: center;
+}
+
+.qrcode-frame {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
 }
 
 .qrcode {
-  position: relative;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: scale-down;
+  position: absolute;
+  width: min(512px, 100%);
+  height: min(512px, 100%);
+  object-fit: contain;
   object-position: center center;
+  margin-left: auto;
+  margin-right: auto;
+  padding-bottom: 64px;
 }

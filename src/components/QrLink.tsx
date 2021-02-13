@@ -8,8 +8,13 @@ const QrLink: React.FC<Props> = ({ sender_url }) => {
   if (sender_url) {
     return (
       <div className={styles.base}>
-        <div className={styles.description}>Sender URL:{sender_url}</div>
-        <QRious className={styles.qrcode} size={400} value={sender_url} />
+        {/* <div className={styles.description}>Sender URL:{sender_url}</div> */}
+        <div className={styles.description}>
+          映像送信元にしたいデバイスのカメラで読み取ってください
+        </div>
+        <div className={styles.qrcodeFrame}>
+          <QRious className={styles.qrcode} size={512} value={sender_url} />
+        </div>
       </div>
     );
   } else {

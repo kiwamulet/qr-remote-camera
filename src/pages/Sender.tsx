@@ -2,6 +2,7 @@ import * as React from "react";
 import { SIGNALING_URL } from "~/common/constants";
 import { Video } from "~/components/Video";
 import * as Ayame from "@open-ayame/ayame-web-sdk";
+import style from "./Sender.css";
 
 type Props = { roomId: string; signalingKey?: string };
 type State = { srcObject: MediaStream | null };
@@ -42,7 +43,14 @@ class Sender extends React.Component<Props, State> {
   }
 
   render() {
-    return <Video srcObject={this.state.srcObject} autoPlay controls />;
+    return (
+      <Video
+        className={style.base}
+        srcObject={this.state.srcObject}
+        autoPlay
+        controls
+      />
+    );
   }
 }
 

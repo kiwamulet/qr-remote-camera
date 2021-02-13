@@ -4,6 +4,7 @@ import { QrLink } from "~/components/QrLink";
 import { Video } from "~/components/Video";
 import { SIGNALING_URL } from "~/common/constants";
 import { constructAppUrl } from "~/common/appUrlUtils";
+import style from "./Receiver.css";
 
 function getUniqueStr() {
   return (
@@ -76,7 +77,13 @@ class Receiver extends React.Component<Props, State> {
     if (!this.state.srcObject) {
       return <QrLink sender_url={this.state.senderUrl.href} />;
     } else {
-      return <Video srcObject={this.state.srcObject} autoPlay />;
+      return (
+        <Video
+          className={style.base}
+          srcObject={this.state.srcObject}
+          autoPlay
+        />
+      );
     }
   }
 }
