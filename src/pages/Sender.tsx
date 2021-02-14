@@ -28,7 +28,9 @@ class Sender extends React.Component<Props, State> {
     const connection = Ayame.connection(SIGNALING_URL, roomId, options, true);
     const mediaStream = await navigator.mediaDevices.getUserMedia({
       audio: false,
-      video: true,
+      video: {
+        facingMode: { ideal: "environment" },
+      },
     });
     connection.on("disconnect", (e: object) => {
       console.log("conn.disconnect", e);
@@ -48,7 +50,7 @@ class Sender extends React.Component<Props, State> {
         className={style.base}
         srcObject={this.state.srcObject}
         autoPlay
-        controls
+        playsInline
       />
     );
   }
